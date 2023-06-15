@@ -3,7 +3,6 @@ package com.rifqi.myPokeDexApp.ui.detail
 import android.content.Context
 import android.database.sqlite.SQLiteConstraintException
 import android.widget.Toast
-import androidx.core.content.contentValuesOf
 import androidx.lifecycle.MutableLiveData
 import com.rifqi.core.data.local.entity.PokemonEntity
 import com.rifqi.core.data.local.room.PokemonDao
@@ -19,7 +18,6 @@ import com.rifqi.myPokeDexApp.util.threadHandler.setSuccess
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class DetailViewModel (
     private val pokemonRepository: PokemonRepository,

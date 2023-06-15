@@ -1,24 +1,15 @@
 package com.rifqi.myPokeDexApp.ui.mypokemon
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rifqi.core.data.local.entity.PokemonEntity
 import com.rifqi.core.model.PokemonResponse
 import com.rifqi.myPokeDexApp.R
 import com.rifqi.myPokeDexApp.base.BaseFragment
-import com.rifqi.myPokeDexApp.databinding.FragmentHomeBinding
 import com.rifqi.myPokeDexApp.databinding.FragmentMyPokemonBinding
 import com.rifqi.myPokeDexApp.ui.MainActivity
-import com.rifqi.myPokeDexApp.ui.home.HomeFragment
-import com.rifqi.myPokeDexApp.ui.home.HomeViewModel
-import com.rifqi.myPokeDexApp.ui.home.adapter.HomeAdapter
 import com.rifqi.myPokeDexApp.ui.mypokemon.adapter.MyPokemonAdapter
-import com.rifqi.myPokeDexApp.util.sealedclass.Resource
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyPokemonFragment : BaseFragment<MyPokemonViewModel, FragmentMyPokemonBinding>(
@@ -80,6 +71,5 @@ class MyPokemonFragment : BaseFragment<MyPokemonViewModel, FragmentMyPokemonBind
         }
         return listUser
     }
-
 
 }

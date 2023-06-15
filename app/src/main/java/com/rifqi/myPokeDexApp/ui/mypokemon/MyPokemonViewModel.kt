@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import com.rifqi.core.data.local.entity.PokemonEntity
 import com.rifqi.core.data.local.room.PokemonDao
 import com.rifqi.core.data.local.room.PokemonDatabase
-import com.rifqi.core.repository.PokemonRepository
 import com.rifqi.myPokeDexApp.base.BaseViewModel
 
 class MyPokemonViewModel (

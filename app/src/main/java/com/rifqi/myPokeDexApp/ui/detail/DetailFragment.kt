@@ -2,10 +2,8 @@ package com.rifqi.myPokeDexApp.ui.detail
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import com.rifqi.core.model.DetailPokemonResponse
 import com.rifqi.myPokeDexApp.R
 import com.rifqi.myPokeDexApp.base.BaseFragment
 import com.rifqi.myPokeDexApp.databinding.FragmentDetailBinding
@@ -145,6 +143,8 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>(
                     this.isClickable = false
                     this.isEnabled = false
                 }
+                tvCatch.text = "You got it :D"
+
             } else {
                 ivPokemonBall.apply {
                     this.setImageDrawable(
@@ -156,10 +156,9 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>(
                     this.isClickable = true
                     this.isEnabled = true
                 }
+                tvCatch.text = "Catch !"
             }
         }
-
-
     }
 
 }

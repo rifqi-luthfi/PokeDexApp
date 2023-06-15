@@ -3,7 +3,6 @@ package com.rifqi.myPokeDexApp.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.rifqi.core.model.Home
 import com.rifqi.myPokeDexApp.R
 import com.rifqi.myPokeDexApp.base.BaseActivity
 import com.rifqi.myPokeDexApp.databinding.ActivityMainBinding

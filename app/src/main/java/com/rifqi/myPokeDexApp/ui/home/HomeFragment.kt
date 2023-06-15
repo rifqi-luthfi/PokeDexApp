@@ -1,6 +1,5 @@
 package com.rifqi.myPokeDexApp.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
@@ -8,7 +7,6 @@ import com.rifqi.myPokeDexApp.R
 import com.rifqi.myPokeDexApp.base.BaseFragment
 import com.rifqi.myPokeDexApp.databinding.FragmentHomeBinding
 import com.rifqi.myPokeDexApp.ui.MainActivity
-import com.rifqi.myPokeDexApp.ui.detail.DetailFragment
 import com.rifqi.myPokeDexApp.ui.home.adapter.HomeAdapter
 import com.rifqi.myPokeDexApp.util.sealedclass.Resource
 import org.koin.androidx.viewmodel.ext.android.viewModel
