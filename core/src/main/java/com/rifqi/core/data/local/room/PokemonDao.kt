@@ -14,9 +14,9 @@ interface PokemonDao {
     @Query("SELECT * FROM pokemonEntity")
     fun getMyList(): LiveData<List<PokemonEntity>>
 
-    @Query("SELECT count(*) FROM pokemonEntity WHERE pokemonEntity.name = :id")
-    fun checkList(id: Int): Int
-
     @Query("DELETE FROM pokemonEntity WHERE pokemonEntity.name = :id")
     fun removeFromMyList(id: Int): Int
+
+    @Query("SELECT count(*) FROM pokemonEntity WHERE pokemonEntity.id = :id")
+    fun checkList(id: Int): Int
 }

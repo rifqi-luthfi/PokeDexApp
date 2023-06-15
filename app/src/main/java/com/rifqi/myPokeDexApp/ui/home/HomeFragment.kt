@@ -1,5 +1,6 @@
 package com.rifqi.myPokeDexApp.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
@@ -45,7 +46,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(
         binding.apply {
             homeAdapter = HomeAdapter().apply {
                 onItemClickCallback = {
-                    MainActivity.newInstance(context = requireContext(),name = it.name,  flag = "detail")
+                    MainActivity.newInstance(context = requireContext(),name = it.name,  flag = "detail", url = it.url)
                 }
             }
             rvPokemon.layoutManager = GridLayoutManager(requireContext(), 2)
@@ -70,6 +71,10 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(
 
                     else -> {}
                 }
+            }
+
+            fabList.setOnClickListener {
+                MainActivity.newInstance(context = requireContext(),name = "",  flag = "own", url = "")
             }
         }
     }
