@@ -7,6 +7,7 @@ import com.rifqi.myPokeDexApp.R
 import com.rifqi.myPokeDexApp.base.BaseFragment
 import com.rifqi.myPokeDexApp.databinding.FragmentHomeBinding
 import com.rifqi.myPokeDexApp.ui.MainActivity
+import com.rifqi.myPokeDexApp.ui.detail.DetailFragment
 import com.rifqi.myPokeDexApp.ui.home.adapter.HomeAdapter
 import com.rifqi.myPokeDexApp.util.sealedclass.Resource
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -15,6 +16,12 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(
     HomeViewModel::class.java,
     R.layout.fragment_home
 ) {
+    companion object {
+        fun newInstance(): HomeFragment {
+            return HomeFragment()
+        }
+
+    }
     private val homeViewModel: HomeViewModel by viewModel()
     override fun getVM(): HomeViewModel = homeViewModel
 
@@ -38,10 +45,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(
         binding.apply {
             homeAdapter = HomeAdapter().apply {
                 onItemClickCallback = {
-//                    CodeGeneratorActivity.newInstance(
-//                        context = requireContext(),
-//                        orderId = it.refNum
-//                    )
+                    MainActivity.newInstance(context = requireContext(),name = it.name,  flag = "detail")
                 }
             }
             rvPokemon.layoutManager = GridLayoutManager(requireContext(), 2)
@@ -69,6 +73,5 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(
             }
         }
     }
-
 
 }

@@ -42,7 +42,6 @@ class HomeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 }
             }
         }
-
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) =
