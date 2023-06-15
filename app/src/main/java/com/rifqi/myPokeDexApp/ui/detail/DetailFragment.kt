@@ -109,6 +109,7 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>(
                         this.isEnabled = false
                     }
                     showToast("congratulations, you caught it")
+                    tvCatch.text = "You got it :D, check in your Pokemon"
                 } else {
                     ivPokemonBall.apply {
                         this.setImageDrawable(
