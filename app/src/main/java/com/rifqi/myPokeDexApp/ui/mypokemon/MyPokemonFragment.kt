@@ -1,5 +1,6 @@
 package com.rifqi.myPokeDexApp.ui.mypokemon
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,6 +42,28 @@ class MyPokemonFragment : BaseFragment<MyPokemonViewModel, FragmentMyPokemonBind
             myPokemonAdapter = MyPokemonAdapter().apply {
                 onItemClickCallback = {
                     MainActivity.newInstance(context = requireContext(),name = it.name,  flag = "detail", url = "")
+                }
+                onItemDeleteCallback = {
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("Delete")
+                        .setMessage("Are You Sure")
+                        .setPositiveButton("Yes"){
+                            dialog,_->
+                            baseViewModel.removeFromMyList(it.name)
+                            baseViewModel.getMyPokemonList()?.observe(viewLifecycleOwner) {
+                                if (it != null) {
+                                    val myPokemonList = mapList(it)
+                                    myPokemonAdapter?.updateData(myPokemonList)
+                                }
+                            }
+                            showToast("Delete Success")
+                            dialog.dismiss()
+                        }
+                        .setNegativeButton("No"){
+                                dialog,_->
+                            dialog.dismiss()
+                        }
+                        .show()
                 }
             }
             rvMyPokemon.layoutManager = LinearLayoutManager(requireContext())

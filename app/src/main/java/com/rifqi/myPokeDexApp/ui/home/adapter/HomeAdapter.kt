@@ -2,6 +2,7 @@ package com.rifqi.myPokeDexApp.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rifqi.core.model.PokemonResponse
@@ -22,6 +23,7 @@ class HomeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     ) : RecyclerView.ViewHolder(binding.root) {
         fun setData(data: PokemonResponse.PokemonItem) {
             binding.apply {
+                ivDelete.isVisible = false
                 val pokemonImage = data.url
                 val number = if (pokemonImage.endsWith("/")) {
                     pokemonImage.dropLast(1).takeLastWhile { it.isDigit() }

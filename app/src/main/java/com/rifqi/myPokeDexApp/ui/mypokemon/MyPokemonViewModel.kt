@@ -6,6 +6,9 @@ import com.rifqi.core.data.local.entity.PokemonEntity
 import com.rifqi.core.data.local.room.PokemonDao
 import com.rifqi.core.data.local.room.PokemonDatabase
 import com.rifqi.myPokeDexApp.base.BaseViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MyPokemonViewModel (
     private val appContext: Context,
@@ -20,5 +23,11 @@ class MyPokemonViewModel (
 
     fun getMyPokemonList(): LiveData<List<PokemonEntity>>? {
         return pokemonDao?.getMyList()
+    }
+
+    fun removeFromMyList(name: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            pokemonDao?.removeFromMyList(name)
+        }
     }
 }
