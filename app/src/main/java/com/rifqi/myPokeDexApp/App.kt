@@ -2,6 +2,7 @@ package com.rifqi.myPokeDexApp
 
 import android.app.Application
 import com.rifqi.myPokeDexApp.di.dispatcherModule
+import com.rifqi.myPokeDexApp.di.networkmodule.pokemonNetworkModule
 import com.rifqi.myPokeDexApp.di.repositoryModule
 import com.rifqi.myPokeDexApp.di.serviceModule
 import com.rifqi.myPokeDexApp.di.viewModelModule
@@ -20,7 +21,8 @@ class App : Application() {
                 viewModelModule,
                 serviceModule,
                 repositoryModule,
-                dispatcherModule
+                dispatcherModule,
+                pokemonNetworkModule,
             ))
         }
     }
