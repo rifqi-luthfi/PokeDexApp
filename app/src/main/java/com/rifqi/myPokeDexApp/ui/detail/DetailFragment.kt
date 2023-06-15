@@ -98,30 +98,10 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>(
                 val randomCatch = (1..2).random()
                 if (randomCatch == 1) {
                     pokemonName.let { name -> baseViewModel.addToMyPokemonList(id, name, url) }
-                    ivPokemonBall.apply {
-                        this.setImageDrawable(
-                            ContextCompat.getDrawable(
-                                requireContext(),
-                                R.drawable.ic_pokemon_ball_disable
-                            )
-                        )
-                        this.isClickable = false
-                        this.isEnabled = false
-                    }
+                    ballDisable()
                     showToast("congratulations, you caught it")
-                    tvCatch.text = "You got it :D, check in your Pokemon"
                 } else {
-                    ivPokemonBall.apply {
-                        this.setImageDrawable(
-                            ContextCompat.getDrawable(
-                                requireContext(),
-                                R.drawable.ic_pokemon_ball
-                            )
-                        )
-                        this.isClickable = true
-                        this.isEnabled = true
-
-                    }
+                    ballVisible()
                     showToast("Sorry, fail catch the pokemon, try again")
                 }
             }
@@ -141,30 +121,9 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>(
             tvWeight.text = "$weight kg"
 
             if (baseViewModel.pokemonEntity?.name.equals(name, true)) {
-                ivPokemonBall.apply {
-                    this.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(),
-                            R.drawable.ic_pokemon_ball_disable
-                        )
-                    )
-                    this.isClickable = false
-                    this.isEnabled = false
-                }
-                tvCatch.text = "You got it :D, check in your Pokemon"
-
+               ballDisable()
             } else {
-                ivPokemonBall.apply {
-                    this.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            requireContext(),
-                            R.drawable.ic_pokemon_ball
-                        )
-                    )
-                    this.isClickable = true
-                    this.isEnabled = true
-                }
-                tvCatch.text = "Catch !"
+                ballVisible()
             }
         }
     }
@@ -185,6 +144,34 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>(
                 }
             }
         }
+    }
+
+    private fun ballDisable(){
+        binding.ivPokemonBall.apply {
+            this.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_pokemon_ball_disable
+                )
+            )
+            this.isClickable = false
+            this.isEnabled = false
+        }
+        binding.tvCatch.text = "You got it :D, check in your Pokemon"
+    }
+
+    private fun ballVisible(){
+        binding.ivPokemonBall.apply {
+            this.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_pokemon_ball
+                )
+            )
+            this.isClickable = true
+            this.isEnabled = true
+        }
+        binding.tvCatch.text = "Catch !"
     }
 
 }
