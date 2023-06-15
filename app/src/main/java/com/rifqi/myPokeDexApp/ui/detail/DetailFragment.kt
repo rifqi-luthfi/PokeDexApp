@@ -150,7 +150,7 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>(
                     this.isClickable = false
                     this.isEnabled = false
                 }
-                tvCatch.text = "You got it :D"
+                tvCatch.text = "You got it :D, check in your Pokemon"
 
             } else {
                 ivPokemonBall.apply {
