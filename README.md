@@ -5,7 +5,7 @@
 There are some such features like,
 - Pokemon List page
 - Pokemon Detail page
-My Pokemon List page;
+- My Pokemon List page
 
 created with:
 - **Readable and Maintainable code**
