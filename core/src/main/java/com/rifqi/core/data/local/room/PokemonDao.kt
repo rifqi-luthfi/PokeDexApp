@@ -17,6 +17,7 @@ interface PokemonDao {
     @Query("DELETE FROM pokemonEntity WHERE pokemonEntity.name = :name")
     fun removeFromMyList(name: String)
 
-    @Query("SELECT count(*) FROM pokemonEntity WHERE pokemonEntity.id = :id")
-    fun checkList(id: Int): Int
+    @Query("SELECT * FROM pokemonEntity WHERE pokemonEntity.name = :name")
+    fun checkList(name: String): PokemonEntity?
+
 }

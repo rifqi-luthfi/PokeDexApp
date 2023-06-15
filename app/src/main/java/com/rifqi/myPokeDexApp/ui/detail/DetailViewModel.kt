@@ -26,7 +26,7 @@ class DetailViewModel (
     val pokemonDetailList : MutableLiveData<Resource<DetailPokemonResponse>> = MutableLiveData()
     private var pokemonDao: PokemonDao?
     private var pokemonDb: PokemonDatabase?
-    var count = 0
+    var pokemonEntity :PokemonEntity? = null
 
     init {
         pokemonDb = PokemonDatabase.getDatabase(appContext)
@@ -63,9 +63,9 @@ class DetailViewModel (
         }
     }
 
-    fun checkPokemon(id: Int) {
+    fun checkPokemon(name: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            count = pokemonDao?.checkList(id) ?: 0
+            pokemonEntity = pokemonDao?.checkList(name)
         }
     }
 

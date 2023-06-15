@@ -62,6 +62,7 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>(
     override fun onResume() {
         super.onResume()
         baseViewModel.getPokemonDetail(name)
+        baseViewModel.checkPokemon(name)
     }
 
     override fun setListener() {
@@ -81,7 +82,6 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>(
                         pokemonName = it.data.name ?: ""
                         id = it.data.id ?: 0
                         pokemonImage = it.data.sprites?.frontDefault ?: ""
-                        baseViewModel.checkPokemon(id)
                         setupView()
                     }
 
@@ -139,7 +139,7 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>(
             tvHeight.text = "$height cm"
             tvWeight.text = "$weight kg"
 
-            if (baseViewModel.count > 0 ) {
+            if (baseViewModel.pokemonEntity?.name.equals(name, true)) {
                 ivPokemonBall.apply {
                     this.setImageDrawable(
                         ContextCompat.getDrawable(
