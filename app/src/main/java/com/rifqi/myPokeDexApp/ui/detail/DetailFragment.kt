@@ -2,7 +2,9 @@ package com.rifqi.myPokeDexApp.ui.detail
 
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.rifqi.myPokeDexApp.R
 import com.rifqi.myPokeDexApp.base.BaseFragment
@@ -67,9 +69,12 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>(
             super.setListener()
             baseViewModel.pokemonDetailList.observe(viewLifecycleOwner) {
                 when (it) {
-                    is Resource.Loading -> {}
+                    is Resource.Loading -> {
+                        setLoading(true)
+                    }
 
                     is Resource.Success -> {
+                        setLoading(false)
                         type = it.data.types?.get(0)?.type?.name ?: ""
                         height = it.data.height?.times(10) ?: 0
                         weight = it.data.weight?.div(10) ?: 0
@@ -81,6 +86,7 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>(
                     }
 
                     is Resource.Error -> {
+                        setLoading(false)
                         showToast("something went wrong")
                     }
 
@@ -127,6 +133,7 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>(
             Glide.with(requireContext())
                 .load(pokemonImage)
                 .into(ivPokemon)
+            cvPokemonDetail.isVisible = true
             tvPokemonName.text = pokemonName
             tvType.text = "Power : ${type}"
             tvHeight.text = "$height cm"
@@ -157,6 +164,24 @@ class DetailFragment : BaseFragment<DetailViewModel, FragmentDetailBinding>(
                     this.isEnabled = true
                 }
                 tvCatch.text = "Catch !"
+            }
+        }
+    }
+
+    private fun setLoading(isLoading: Boolean){
+        with(binding){
+            pbLoading.isVisible = isLoading
+            if(isLoading) {
+                requireActivity().runOnUiThread {
+                    requireActivity().window?.setFlags(
+                        WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                        WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+                    )
+                }
+            } else {
+                requireActivity().runOnUiThread {
+                    requireActivity().window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+                }
             }
         }
     }

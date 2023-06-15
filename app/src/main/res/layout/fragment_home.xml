@@ -8,8 +8,15 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clScreenHome"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/i_card_loading"
+            layout="@layout/layout_home_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <FrameLayout
             android:id="@+id/frameLayout"

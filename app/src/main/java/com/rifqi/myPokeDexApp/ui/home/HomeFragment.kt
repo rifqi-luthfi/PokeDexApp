@@ -9,6 +9,7 @@ import com.rifqi.myPokeDexApp.databinding.FragmentHomeBinding
 import com.rifqi.myPokeDexApp.ui.MainActivity
 import com.rifqi.myPokeDexApp.ui.home.adapter.HomeAdapter
 import com.rifqi.myPokeDexApp.util.sealedclass.Resource
+import com.rifqi.myPokeDexApp.util.view.showShimmer
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(
@@ -57,14 +58,18 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(
             super.setListener()
             baseViewModel.pokemonList.observe(viewLifecycleOwner) {
                 when (it) {
-                    is Resource.Loading -> {}
+                    is Resource.Loading -> {
+                        showShimmer(iCardLoading.shimmerViewContainer, iCardLoading.llLoading, clScreenHome, true)
+                    }
                     is Resource.Success -> {
                         val pokemons = it.data.results
                         homeAdapter?.updateData(pokemons = pokemons)
+                        showShimmer(iCardLoading.shimmerViewContainer, iCardLoading.llLoading, clScreenHome, false)
                     }
 
                     is Resource.Error -> {
                         showToast("something went wrong")
+                        showShimmer(iCardLoading.shimmerViewContainer, iCardLoading.llLoading, clScreenHome, false)
                     }
 
                     else -> {}
