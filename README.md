@@ -9,7 +9,7 @@ There are some such features like,
 
 created with:
 - **Readable and Maintainable code**
-- **Sibgle Activity Architecture**
+- **Single Activity Architecture**
 - **Modularization**
 - **Reusable Code and Base**
 - **View Binding**
