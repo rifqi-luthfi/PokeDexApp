@@ -17,7 +17,8 @@ created with:
 - **Live Data**
 - **Coroutine**
 - **Retrofit**
-- **koin**
+- **Koin**
+- **Room**
 
 ## Improvement
 And I've been thinking to improve this project by doing some stuff like,
